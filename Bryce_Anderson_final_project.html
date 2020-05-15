@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+#overlay 
+{
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 25px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+.room 
+{
+  position: relative;
+  text-align: center;
+  color: white;
+  width: 1000px;
+  height: 750px;
+}
+
+.floor 
+{
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+}
+
+.table
+{
+  position: absolute;
+  top: 380px;
+  left: 400px;
+}
+
+.cross 
+{
+  position: absolute;
+  top: 8px;
+  right: 400px;
+}
+
+.tentacles
+{
+  position: absolute;
+  bottom: 200px;
+  right: 0px;
+}
+	
+</style>
+<body onload="on(0)">
+
+<div id="overlay" onclick="off()">
+  <div id="text"> </div>
+</div>
+
+<div class="room" style="position: relative">
+  
+  <img id="Room" 
+  src="https://i.postimg.cc/QM90tkSC/interrogation-room.png" 
+  style="width: 1000px; height: 750px">
+  
+	<div class="floor">
+
+		<img id="Floor"
+		src="https://i.postimg.cc/ZK9RwwbV/man-sitting-on-floor.png" 
+		style="width: 184px; height: 184px;" 
+		onclick="on(0)">
+	
+	</div>
+    
+	<div class="table">
+
+		<img id="Table"
+		src="https://i.postimg.cc/PrzwW629/man-sitting-on-table.png" 
+		style="width: 168px; height: 168px; opacity: 0.0; " 
+		onmouseenter="toggleVisibility('Table')" 
+		onmouseleave="toggleVisibility('Table')" 
+		onclick="on(1)">
+
+	</div>
+
+	<div class="cross">
+
+			<img id="Cross"
+			src="https://i.postimg.cc/zv9HVVVS/cross.png" 
+			style="width: 125px; height: 175px; opacity: 0.0; " 
+			onmouseenter="toggleVisibility('Cross')" 
+			onmouseleave="toggleVisibility('Cross')" 
+			onclick="on(2)">
+		
+	</div>
+		
+	<div class="tentacles">
+	
+		<img id="Tentacles"
+		src="https://i.postimg.cc/pTcHMtW4/tentacles.png" 
+		style="width: 250px; height: 275px; opacity: 0.0; " 
+		onmouseenter="toggleVisibility('Tentacles')" 
+		onmouseleave="toggleVisibility('Tentacles')" 
+		onclick="on(3)">
+	</div>
+
+</div>
+
+
+<script>
+
+function toggleVisibility(x)
+{		
+		if (document.getElementById(x).style.opacity != 1.0)
+		{
+			document.getElementById(x).style.opacity = 1.0;
+		}
+		else
+		{
+			document.getElementById(x).style.opacity = 0.0;
+		}
+}
+function on(x) 
+{
+	setOverlayText(x);
+	document.getElementById("overlay").style.display = "block";
+}
+
+function off() 
+{
+	document.getElementById("overlay").style.display = "none";
+}
+
+function setOverlayText(x)
+{
+	if (x==0)
+	{ 
+		document.getElementById("text").innerHTML = 
+		"GENERAL CLINICAL NOTE:<br><br>Note that the voices within the patient's mind are beginning to dictate his perception of his surroundings, thus prompting erratic behavior. He has difficulty distinguishing between real and imagined dialouge and sensations, which serves as an obvious detriment to his mental health. Patient has made claims of being the reincarnation of Jesus Christ and has repeatedly accused doctors of imprisoning him for torture and experimentation.<br><br>Patient's family fears he may begin to cause harm to himself and others, a fear many doctors share. Since learning of the patient's diagnosis of schizophrenia, family has..."
+	}
+	else if (x==1)
+	{
+		document.getElementById("text").innerHTML = 
+		"I don't know who this man is. He's appeared several times, but he never told me his name. He says I shouldn't trust the doctors, that they're improsoning me and want to torture and experiment on me. I'm sure he's right; why else would they lock me in this place? He's pointed out that the food they give me is laced with drugs to keep me under control, so he's been helpful so far. But what are his real motives? What if he's lying to me? What if HE wants to torture me? What would he do if I listened to the doctors and tried to make him go away? I don't know who to trust, if anyone. <br><br>I don't want to get hurt.";
+	}
+	else if (x==2)
+	{
+		document.getElementById("text").innerHTML = 
+		"I was sent here to save humanity, chosen to deliver them from sin. So many faithful people pray and yearn for the second coming of Christ, yet now that I have arrived, they write me off as delusional and lock me up in this building. I am the profit of the Lord, our God, and I have returned to free humanity from sin. I deserve praise, not imprisonment.<br><br>I am the Messaiah. Why won't they listen?"
+	}
+	else if (x==3)
+	{
+		document.getElementById("text").innerHTML = 
+		"Sometimes they come from the walls. Other times from the floor. These things... they are not of this world. They come from the cosmos, from planets billions of miles away. These beings have travelled an unimaginable distance to make contact with humanity, to observe and study them. I don't know what they are, but they mean us harm. I've felt their tentacles on my arms and legs, caressing my skin the way a human pets a dog. I felt violated.<br><br>I can't stay here. They won't be so gentle forever. It's only a matter of time before they pull my body apart."
+	}
+
+}      
+
+</script>
+
+</body>
+</html>
